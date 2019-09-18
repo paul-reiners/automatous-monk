@@ -1,3 +1,11 @@
+.DS_Store
+.idea/workspace.xml
+src/.DS_Store
+src/main/.DS_Store
+src/main/chuck/.DS_Store
+src/main/chuck/reggae/.DS_Store
+src/main/chuck/reggae/riddim/.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
