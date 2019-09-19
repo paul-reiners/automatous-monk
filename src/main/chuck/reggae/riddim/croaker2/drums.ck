@@ -8,51 +8,34 @@ whole / 2 => dur half;
 whole / 4 => dur quarter;
 whole / 8 => dur eighth;
 
-// Kick drum function
-fun void kick() {         // (2) Function to play kick drum.
     SndBuf kick => dac;
     me.dir(-1)+"/audio/kick_01.wav" => kick.read;
     .5 => kick.gain;
-    while (true) {
-        half => now;
-        0 => kick.pos;
-        quarter => now;
-        quarter => now;
-    }
-}
 
-// Snare drum function
-fun void snare() {        // (3) Function to play snare drum.
     SndBuf snare => dac;
     me.dir(-1)+"/audio/snare_01.wav" => snare.read;
     .5 => snare.gain;
-    while (true) {
-        half => now;
-        0 => snare.pos;
-        quarter => now;
-        quarter => now;
-    }
-}
-
-// Hi hat drum function
-fun void hihat() {        // (4) Function to play hi-hat.
+    
     SndBuf hihat => dac;                      // (1) Hi-hat sound for percussion.
     me.dir(-1) + "/audio/hihat_01.wav" => hihat.read;  // (2) Reads the wave file.
     0.2 => hihat.gain;
+    
     while (true) {
-        quarter => now;
+        // beat 1
         0 => hihat.pos;
+        quarter => now;
+        
+        // beat 2
+        0 => hihat.pos;
+        quarter => now;
+        
+        // beat 3
+        0 => hihat.pos;
+        0 => kick.pos;
+        0 => snare.pos;
+        quarter => now;
+        
+        // beat 4
+        0 => hihat.pos;
+        quarter => now;
     }
-}
-
-// Main program to spork our individual drum functions
-// start off with kick drum for two measures
-spork ~ kick();         // (5) Sporking kick function starts it playing
-2*whole => now;
-
-// then add in hi hat after two measures
-spork ~ hihat();        // (6) Sporks hi-hat after a time
-2*whole => now;
-
-// add snare
-spork ~ snare();        // (7) Sporks snare 
