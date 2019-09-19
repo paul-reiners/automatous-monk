@@ -1,31 +1,71 @@
-// Listing 8.5 Jazz band: 
-// save as "piano.ck" 
+// Croaker riddim
+
+// by Paul Reiners, September 2019
+// First define some global durations
+// BPM = 156
+1.54 :: second => dur whole; // (1) Defines whole, half, and quarter note durations.
+whole / 2 => dur half;
+whole / 4 => dur quarter;
+whole / 8 => dur eighth;
+
 // sound chain 
-Rhodey piano[4];             // (1) Four notes' worth of electric piano 
+Rhodey piano[3];             // (1) three notes' worth of electric piano 
 
 piano[0] => dac.left;        // (2) Connects them to left...
 piano[1] => dac;             //     ...and center... 
-piano[2] => dac;             
-piano[3] => dac.right;       // (3) ...and right dac channels.
+piano[2] => dac.right;       // (3) ...and right dac channels.
 
 // chord 2D array            // (4) Array to hold two chords of four notes each.
-[[53,57,60,64],[51,55,60,63]] @=> int chordz[][]; 
+[[67,71,74],[67,72,76]] @=> int chordz[][]; 
 
 // loop
 while( true )                  // (5) Infinite loop
 {
+    // beat 1
+    quarter => now;
+
+    // beat 2
     // build first chord
-    for( 0 => int i; i < 4; i++ )
+    for( 0 => int i; i < 3; i++ )
     {                          // (6) Plays first chord...
         Std.mtof(chordz[0][i]) => piano[i].freq;
         Math.random2f(0.3,.7) => piano[i].noteOn;
     }
-    1.0 :: second => now;
+    quarter => now;
+    
+    // beat 3
+    quarter => now;
+    
+    // beat 4
+    // build first chord
+    for( 0 => int i; i < 3; i++ )
+    {                          // (6) Plays first chord...
+        Std.mtof(chordz[0][i]) => piano[i].freq;
+        Math.random2f(0.3,.7) => piano[i].noteOn;
+    }
+    quarter => now;
+    
+    // beat 1
+    quarter => now;
+
+    // beat 2
     // build second chord
-    for( 0 => int i; i < 4; i++ )
+    for( 0 => int i; i < 3; i++ )
     {                          // (7) ...then second chord
         Math.mtof(chordz[1][i]) => piano[i].freq;
         Math.random2f(0.3,.7) => piano[i].noteOn;
     }
-    1.4 :: second => now;
+    quarter => now;
+    
+    // beat 3
+    quarter => now;
+    
+    // beat 4
+    // build second chord
+    for( 0 => int i; i < 3; i++ )
+    {                          // (7) ...then second chord
+        Math.mtof(chordz[1][i]) => piano[i].freq;
+        Math.random2f(0.3,.7) => piano[i].noteOn;
+    }
+    quarter => now;
 }
