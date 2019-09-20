@@ -3,10 +3,10 @@
 // by Paul Reiners, September 2019
 // First define some global durations
 // BPM = 156
-1.54 :: second => dur whole; // (1) Defines whole, half, and quarter note durations.
-whole / 2 => dur half;
-whole / 4 => dur quarter;
-whole / 8 => dur eighth;
+BPM tempo;
+tempo.tempo(156.0);
+
+tempo.wholeNote => dur whole;
 
 // start piano         // (1) Starts off with piano chords...
 Machine.add(me.dir() + "/piano.ck") => int pianoID;
@@ -29,3 +29,12 @@ Machine.remove(drumsID); // (5) Cuts the percussion for a bit...
 Machine.add(drumsPath) => drumsID;   // (6) ...then adds it back in
 // let it run for eight more measures
 8*whole => now;         // (8) Lets it all run for eight more measures
+
+// bring out the instruments, gradually
+Machine.remove(pianoID);     // (6) Pulls out instruments one at a time
+
+8.0 * tempo.quarterNote => now;
+Machine.remove(bassID);
+
+8.0 * tempo.quarterNote => now;
+Machine.remove(drumsID);

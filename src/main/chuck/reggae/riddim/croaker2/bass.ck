@@ -3,10 +3,7 @@
 // by Paul Reiners, September 2019
 // First define some global durations
 // BPM = 156
-1.54 :: second => dur whole; // (1) Defines whole, half, and quarter note durations.
-whole / 2 => dur half;
-whole / 4 => dur quarter;
-whole / 8 => dur eighth;
+BPM tempo;
 
     // sound chain (mandolin for bass)
     Mandolin bass => NRev r => dac;     // (1) Mandolin bass player through reverb.
@@ -25,10 +22,14 @@ whole / 8 => dur eighth;
     48, 48, 48, 42,
     43, 43, 43, 47, 50, 
     48, 48, 0, 42] @=> int line[];
-    [quarter, quarter, eighth, eighth, quarter,
-    quarter, quarter, quarter, quarter,
-    quarter, quarter, eighth, eighth, quarter,
-    quarter, quarter, quarter, quarter] @=> dur durs[];
+    
+    tempo.quarterNote => dur quarterNote;
+    tempo.eighthNote => dur eighthNote;
+    
+    [quarterNote, quarterNote, eighthNote, eighthNote, quarterNote,
+    quarterNote, quarterNote, quarterNote, quarterNote,
+    quarterNote, quarterNote, eighthNote, eighthNote, quarterNote,
+    quarterNote, quarterNote, quarterNote, quarterNote] @=> dur durs[];
     
     // play every quarter note
     0 => int i;
