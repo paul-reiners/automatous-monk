@@ -2,11 +2,7 @@
 
 // by Paul Reiners, September 2019
 // First define some global durations
-// BPM = 156
-1.54 :: second => dur whole; // (1) Defines whole, half, and quarter note durations.
-whole / 2 => dur half;
-whole / 4 => dur quarter;
-whole / 8 => dur eighth;
+BPM tempo;
 
 // sound chain 
 Rhodey piano[3];             // (1) three notes' worth of electric piano 
@@ -17,6 +13,8 @@ piano[2] => dac.right;       // (3) ...and right dac channels.
 
 // chord 2D array            // (4) Array to hold two chords of four notes each.
 [[67,71,74],[67,72,76]] @=> int chordz[][]; 
+
+tempo.quarterNote => dur quarter;
 
 // loop
 while( true )                  // (5) Infinite loop

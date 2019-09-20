@@ -2,11 +2,7 @@
 
 // by Paul Reiners, September 2019
 // First define some global durations
-// BPM = 156
-1.54 :: second => dur whole; // (1) Defines whole, half, and quarter note durations.
-whole / 2 => dur half;
-whole / 4 => dur quarter;
-whole / 8 => dur eighth;
+BPM tempo;
 
     SndBuf kick => dac;
     me.dir(-1)+"/audio/kick_01.wav" => kick.read;
@@ -19,6 +15,8 @@ whole / 8 => dur eighth;
     SndBuf hihat => dac;                      // (1) Hi-hat sound for percussion.
     me.dir(-1) + "/audio/hihat_01.wav" => hihat.read;  // (2) Reads the wave file.
     0.2 => hihat.gain;
+    
+    tempo.quarterNote => dur quarter;
     
     while (true) {
         // beat 1
