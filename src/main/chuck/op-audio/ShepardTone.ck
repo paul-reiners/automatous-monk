@@ -39,23 +39,15 @@ while (true) {
             0.0 => float gain;
             if (j < 2) {
                 i => gainIndex;
-                <<< "\t\tgainIndex:", gainIndex >>>;
-                gains[gainIndex] => gain;
-                if (j == 0) {
-                    if (i == 0) {
-                        0.0 => gain;
-                    } else {
-                        gain / 2.0 => gain;
-                    }
-                }
             } else {
                 HALF_STEPS_IN_OCTAVE - 1 - i => gainIndex;
-                <<< "\t\tgainIndex:", gainIndex >>>;
-                gains[gainIndex] => gain;
-                if (j == 3) {
-                    gain / 2.0 => gain;
-                }
             }
+            gains[gainIndex] => gain;
+            if (j == 0 || j == 3) {
+                gain / 2.0 => gain;
+            }
+            
+            <<< "\t\tgainIndex:", gainIndex >>>;
             gain => chord[j].gain;
             <<< "\t\tgain:", gain >>>;
         }
