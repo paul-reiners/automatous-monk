@@ -1,6 +1,7 @@
 // Author: Paul Reiners
 // Implementation of the 
-// [Shepard tone](https://en.wikipedia.org/wiki/Shepard_tone).
+// [Shepard tone scale](https://en.wikipedia.org/wiki/Shepard_tone).
+// See [illustration](GEBShepardToneScale.jpeg) from Gödel, Escher, Bach, by Douglas R. Hofstadter.
 
 12 => int HALF_STEPS_IN_OCTAVE;
 4 => int VOICE_COUNT;
