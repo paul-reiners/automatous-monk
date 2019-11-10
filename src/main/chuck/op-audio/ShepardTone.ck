@@ -6,11 +6,11 @@
 
 SinOsc chord[3];
 
-float gain[3];
+float gain[4];
 48 => int c3;
-
-chord[0] => dac;
+ 
 chord[1] => dac;
+chord[2] => dac;
 
 int chromaticScale[HALF_STEPS_IN_OCTAVE];
 float gains[HALF_STEPS_IN_OCTAVE];
@@ -28,24 +28,24 @@ while (true) {
         lowPitch + 12 => int highPitch;
         Std.mtof(lowPitch) => float lowerFreq;
         <<< "\tlowerFreq:", lowerFreq >>>;
-        lowerFreq => chord[0].freq;
+        lowerFreq => chord[1].freq;
         
         Std.mtof(highPitch) => float upperFreq;
         <<< "\tupperFreq:", upperFreq >>>;
-        upperFreq => chord[1].freq;
+        upperFreq => chord[2].freq;
         
         gains[i] => float lowerGain;
         <<< "\tlowerGain:", lowerGain >>>;
-        lowerGain => chord[0].gain;
+        lowerGain => chord[1].gain;
         
         gains[HALF_STEPS_IN_OCTAVE - 1 - i] => float upperGain;
-        upperGain => chord[1].gain;
+        upperGain => chord[2].gain;
         <<< "\tupperGain:", upperGain >>>;
                 
         2 * second => now;
         
-        0 => chord[0].gain;
         0 => chord[1].gain;
+        0 => chord[2].gain;
         
         0.25 * second => now;
     }
