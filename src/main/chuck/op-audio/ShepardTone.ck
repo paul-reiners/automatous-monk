@@ -16,8 +16,7 @@ for (0 => int i; i < VOICE_COUNT; i++) {
 
 float gains[HALF_STEPS_IN_OCTAVE];
 for (0 => int i; i < HALF_STEPS_IN_OCTAVE; i++) {
-    i => float iFloat;
-    (iFloat / HALF_STEPS_IN_OCTAVE) * 0.5 => gains[i];
+    ((i + 1.0) / HALF_STEPS_IN_OCTAVE) * 0.5 => gains[i];
     <<< "gain:", i, gains[i] >>>;
 }
 while (true) {
@@ -26,7 +25,7 @@ while (true) {
             0 => chord[j].gain;
         }
         
-         0.25 * second => now;
+        0.25 * second => now;
         <<< "\nnote:", i >>>; 
         for (0 => int j; j < VOICE_COUNT; j++) {
             <<< "\tvoice", j >>>; 
@@ -48,6 +47,7 @@ while (true) {
                     }
                     gain => chord[j].gain;
                 }
+                <<< "\t\tgain:", gain >>>;
             } else {
                 HALF_STEPS_IN_OCTAVE - 1 - i => gainIndex;
                 <<< "\t\tgainIndex:", gainIndex >>>;
@@ -56,6 +56,7 @@ while (true) {
                     gain / 2.0 => gain;
                 }
                 gain => chord[j].gain;
+                 <<< "\t\tgain:", gain >>>;
             }
         }
         
