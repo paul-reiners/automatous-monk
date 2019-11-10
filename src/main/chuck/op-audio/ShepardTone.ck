@@ -46,8 +46,8 @@ while (true) {
                     } else {
                         gain / 2.0 => gain;
                     }
-                    gain => chord[j].gain;
                 }
+                gain => chord[j].gain;
                 <<< "\t\tgain:", gain >>>;
             } else {
                 HALF_STEPS_IN_OCTAVE - 1 - i => gainIndex;
