@@ -16,8 +16,10 @@ for (0 => int i; i < VOICE_COUNT; i++) {
 }
 
 float gains[HALF_STEPS_IN_OCTAVE];
+0.5 => float MAX_GAIN;
 for (0 => int i; i < HALF_STEPS_IN_OCTAVE; i++) {
-    ((i + 1.0) / HALF_STEPS_IN_OCTAVE) * 0.5 => gains[i];
+    ((i + 1.0) / HALF_STEPS_IN_OCTAVE) => float fraction;
+    Math.sin(fraction * Math.PI / 2.0) * MAX_GAIN => gains[i];
     <<< "gain:", i, gains[i] >>>;
 }
 while (true) {
