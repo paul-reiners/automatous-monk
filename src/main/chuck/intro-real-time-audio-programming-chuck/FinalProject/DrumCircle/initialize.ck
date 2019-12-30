@@ -1,12 +1,16 @@
-// Drum kit:
-
 <<< "Paul Reiners" >>>;
 <<< "Starting initialize.ck" >>>;
 
 me.dir() + "/BPM.ck" => string bpmPath;
 Machine.add(bpmPath);
 
-me.dir() + "/score.ck" => string scorePath;
+me.dir() + "/ElementaryCA.ck" => string elementaryCAPath;
+Machine.add(elementaryCAPath);  
 
-Machine.add(scorePath);  // (1) Adds score file for drums
+me.dir() + "/drums.ck" => string drumsPath;
+Machine.add(drumsPath);  
+
+me.dir() + "/score.ck" => string scorePath;
+Machine.add(scorePath);  
+
 <<< "Ending initialize.ck" >>>;
