@@ -21,14 +21,14 @@ def setup():
         flock.addBoid(Boid(width / 2, height / 2))
     # Create the sine oscillator.
     global ch_1, ch_2
-    ch_1 = SinOsc(this)
+    ch_1 = Pulse(this)
     ch_1.play(0,1)
-    ch_2 = SinOsc(this)
+    ch_2 = Pulse(this)
     ch_2.play(0,1)
 
 def draw():
     background(50)
-    flock.run(ch_1, ch_2, width)
+    flock.run(ch_1, ch_2, width, height)
 
 # Add a boid into the System
 def mousePressed():
