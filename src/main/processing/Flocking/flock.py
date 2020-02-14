@@ -13,19 +13,16 @@ class Flock(object):
         for b in self.boids:
             # Pass the entire list of boids to each boid individually.
             b.run(self.boids)
+    
         x_avg = self.get_x_avg()
-        
         x_velocity_avg = self.get_x_velocity_avg()
-        x_add = x_velocity_avg 
-        
         y_velocity_avg = self.get_y_velocity_avg()
-        y_add = y_velocity_avg 
-        
         pos = (x_avg / w) * 2 - 1
-        # Syntax: .set(freq, amp, add, pos)
-        ch_1.set(x_avg, 1, x_velocity_avg, pos)
         y_avg = self.get_y_avg()
-        ch_2.set(y_avg, 1, y_velocity_avg, pos)
+        
+        # Syntax: .set(freq, amp,            add, pos)
+        ch_1.set(     x_avg,   1, x_velocity_avg, pos)
+        ch_2.set(     y_avg,   1, y_velocity_avg, pos)
     
     def addBoid(self, b):
         self.boids.append(b)
