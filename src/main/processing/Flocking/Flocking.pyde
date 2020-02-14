@@ -23,12 +23,12 @@ def setup():
     global ch_1, ch_2
     ch_1 = SinOsc(this)
     ch_1.play(0,1)
-    ch_2 = SawOsc(this)
+    ch_2 = SinOsc(this)
     ch_2.play(0,1)
 
 def draw():
     background(50)
-    flock.run(ch_1, ch_2)
+    flock.run(ch_1, ch_2, width)
 
 # Add a boid into the System
 def mousePressed():
