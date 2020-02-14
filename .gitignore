@@ -13,6 +13,13 @@ src/main/chuck/intro-real-time-audio-programming-chuck/FinalProject/FinalProject
 src/main/chuck/intro-real-time-audio-programming-chuck/FinalProject/FinalProject.zip
 src/main/chuck/intro-real-time-audio-programming-chuck/FinalProject/Finalproject.m4a
 .idea/
+*.aif
+*.asd
+*.wav
+src/main/chuck/disquiet-junto/0422/0422 Project/
+src/main/chuck/disquiet-junto/0422/ProfessorLonghair-Tipitina.mid
+src/main/chuck/disquiet-junto/0422/chapter-cascade.jpeg
+*.m4a
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

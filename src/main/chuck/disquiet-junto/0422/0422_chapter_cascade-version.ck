@@ -10,11 +10,11 @@ SndBuf decelerationSound => Pan2 decPan => dac;
 me.dir() => string path;    
 
 // Sample rate: 48 kHz
-"/accNorm.aif" => string accelerationFilename; 
-48000 => int accSamplesPerSecond;
+"/0422VersionTipitinaVanilla.aif" => string accelerationFilename; 
+44100 => int accSamplesPerSecond;
 
 // Sample rate: 32 kHz
-"/decNorm.aif" => string decelerationFileName; 
+"/0422VersionTipitinaOrange.aif" => string decelerationFileName; 
 32000 => int decSamplesPerSecond;
 
 path+accelerationFilename => accelerationFilename;  
@@ -38,7 +38,7 @@ accelerationSound.samples() => int accSamples;
 accPanPos => accPan.pan;
 decPanPos => decPan.pan;
 while (factor >= 0.0001) {
-    factor * 1000::ms => dur noteLen;
+    factor * 10000::ms => dur noteLen;
     
     accPos => accelerationSound.pos;
     decSamples => decelerationSound.pos;      
@@ -47,19 +47,19 @@ while (factor >= 0.0001) {
     
     decSamples => decelerationSound.pos;      
     accSamples => accelerationSound.pos;
-    2 * noteLen => now;      
+    noteLen => now;      
     
     decPos => decelerationSound.pos;
     accSamples => accelerationSound.pos;      
     noteLen => now;
     decPos + Std.ftoi(Math.round(factor * decSamplesPerSecond)) => decPos;
     
-    factor * 0.9 => factor;
-    gain * 0.9 => gain; 
+    factor * 0.5 => factor;
+    gain * 0.5 => gain; 
     gain => accelerationSound.gain;
     gain => decelerationSound.gain;
     
     decSamples => decelerationSound.pos;      
     accSamples => accelerationSound.pos;
-    2 * noteLen => now;      
+    noteLen => now;      
 }
