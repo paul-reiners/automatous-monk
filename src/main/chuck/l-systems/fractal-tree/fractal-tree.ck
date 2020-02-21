@@ -73,19 +73,31 @@ fun void print_tree(int tree[], int gen) {
 
 fun void sound_notes(int tree[]) {
     60 => int note;
+    .5 / tree.cap() => float gain;
+    .5 => float param;
     for (0 => int i; i < tree.cap(); i++) {
         if (tree[i] == 0) {
             Moog moog => dac;
             note => Std.mtof => moog.freq;
-            .8 => moog.noteOn;
+            0.8 => moog.noteOn;
+            gain => moog.volume;
+            param => moog.filterQ;
+            <<< "volume:", moog.volume() >>>;
+            <<< "filterQ", moog.filterQ() >>>;
         } else if (tree[i] == 1) {
             Moog moog => dac;
             note + 12 => Std.mtof => moog.freq;
-            .8 => moog.noteOn;
+            0.8 => moog.noteOn;
+            gain => moog.volume;
+            param => moog.filterQ;
+            <<< "volume:", moog.volume() >>>;
+            <<< "filterQ", moog.filterQ() >>>;
         } else if (tree[i] == -2) {
             note - 1 => note;
+            param / 2.0 => param;
         } else {
             note + 1 => note;
+            (param + 1.0) / 2.0 => param;
         }
     }
 
