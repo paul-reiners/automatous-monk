@@ -4,7 +4,9 @@
 
 .1*4 => float gainSet;
 
-(60./120.)::second*4 => dur beat;
+BPM t; // Define t Object of Class BPM
+
+t.quarterNote => dur beat;
 
 beat - (now % beat) => now;
 
@@ -45,7 +47,6 @@ path + "../../audio/Tom-808-Mid.aif" => tom2.read;
 path + "../../audio/Tom-808-Hi.aif" => tom3.read;
 
 1 => int j;
-
 
 while (true) {
     spork~hatPlay(pHat,beat);
