@@ -5,7 +5,7 @@
 <<< "Starting score.ck" >>>;
 
 BPM t; // Define t Object of Class BPM // (5) Tests your BPM object by making one
-t.tempo(120); // set tempo in BPM  // (6) Sets tempo of new BPM object
+t.tempo(96); // set tempo in BPM  // (6) Sets tempo of new BPM object
 
 ElementaryCA elementaryCA;
 [0, 0, 0, 1, 1, 1, 1, 0] @=> elementaryCA.ruleset;
@@ -20,12 +20,9 @@ Machine.add(drumsPath);
 
 for (0 => int i; i < 1024; i++) {
     i % 16 => int beat;
-    // One drop
-    if (i % 4 == 0) {
-        mog.playNote(gen0, beat);
-    }
+    mog.playNote(gen0, beat);
     
-    t.eighthNote => now;
+    t.quarterNote => now;
 
     elementaryCA.getNextGeneration(gen0) @=> int gen1[];
     <<< "generation", i >>>;
