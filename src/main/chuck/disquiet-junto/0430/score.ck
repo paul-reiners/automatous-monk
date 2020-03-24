@@ -5,7 +5,8 @@
 <<< "Starting score.ck" >>>;
 
 BPM t; // Define t Object of Class BPM // (5) Tests your BPM object by making one
-t.tempo(96); // set tempo in BPM  // (6) Sets tempo of new BPM object
+96 => int bpm;
+t.tempo(bpm); // set tempo in BPM  // (6) Sets tempo of new BPM object
 
 ElementaryCA elementaryCA;
 [0, 0, 0, 1, 1, 1, 1, 0] @=> elementaryCA.ruleset;
@@ -16,9 +17,14 @@ ElementaryCA elementaryCA;
 CAMoog mog;
 
 me.dir() + "/DrumProbsXSporks.ck" => string drumsPath;
-Machine.add(drumsPath);  
+Machine.add(drumsPath) => int drumJob;  
 
-for (0 => int i; i < 1024; i++) {
+// Record a short piece of music, roughly two to three minutes in length
+now => time t1; 
+for (0 => int i; i < 16; i++) {
+    t.quarterNote => now;
+}
+for (0 => int i; i < 256; i++) {
     i % 16 => int beat;
     mog.playNote(gen0, beat);
     
@@ -29,5 +35,13 @@ for (0 => int i; i < 1024; i++) {
     <<< gen1[0], gen1[1], gen1[2], gen1[3], gen1[4], gen1[5], gen1[6], gen1[7], gen1[8], gen1[9], gen1[10], gen1[11] >>>;
     gen1 @=> gen0;
 }
+for (0 => int i; i < 16; i++) {
+    t.quarterNote => now;
+}
+Machine.remove(drumJob);
+now => time t2;
+t2 - t1 => dur span;
+<<<"total">>>;
+<<<span / 60 / 1000>>>;
 
 <<< "Ending score.ck" >>>;

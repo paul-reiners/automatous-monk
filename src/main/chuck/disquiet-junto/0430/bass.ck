@@ -1,5 +1,11 @@
 public class CAMoog {
-    Moog bass => dac.right;
+    // sound chain (mandolin for bass)
+    Mandolin bass => dac;     // (1) Mandolin bass player
+
+    // parameter setup 
+    0.0 => bass.stringDamping; // (2) Makes strings ring a long time. 
+    0.02 => bass.stringDetune; // (3) Gives it a really big bass-sized body.
+    0.05 => bass.bodySize;
     
     fun void playNote(int ca[], int beatNumber) {
     // One drop
