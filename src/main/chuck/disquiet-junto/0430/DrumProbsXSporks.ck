@@ -2,7 +2,7 @@
 // Original code: https://github.com/charliekramer/ChucK/blob/master/Drum%20probs%20x%20sporks.ck
 // Minor modifications by Paul Reiners
 
-.1*4 => float gainSet;
+.1 * 2 => float gainSet;
 
 BPM t; // Define t Object of Class BPM
 
