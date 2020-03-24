@@ -5,7 +5,7 @@
 <<< "Starting score.ck" >>>;
 
 BPM t; // Define t Object of Class BPM // (5) Tests your BPM object by making one
-96 => int bpm;
+72 => int bpm;
 t.tempo(bpm); // set tempo in BPM  // (6) Sets tempo of new BPM object
 
 ElementaryCA elementaryCA;
