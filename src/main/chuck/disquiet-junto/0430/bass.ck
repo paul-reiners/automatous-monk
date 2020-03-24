@@ -1,5 +1,6 @@
 public class CAMoog {
-    Moog bass => dac.right;     
+    Moog bass => NRev snareRev => dac.right;
+    .05 => snareRev.mix;
 
     40 => int eBassString;
     
