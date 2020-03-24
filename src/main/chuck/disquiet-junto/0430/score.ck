@@ -28,13 +28,14 @@ for (0 => int i; i < 256; i++) {
     i % 16 => int beat;
     mog.playNote(gen0, beat);
     
-    t.quarterNote => now;
+    t.eighthNote => now;
 
     elementaryCA.getNextGeneration(gen0) @=> int gen1[];
     <<< "generation", i >>>;
     <<< gen1[0], gen1[1], gen1[2], gen1[3], gen1[4], gen1[5], gen1[6], gen1[7], gen1[8], gen1[9], gen1[10], gen1[11] >>>;
     gen1 @=> gen0;
 }
+mog.silence();
 for (0 => int i; i < 16; i++) {
     t.quarterNote => now;
 }
