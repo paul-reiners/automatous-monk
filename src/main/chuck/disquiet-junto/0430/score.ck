@@ -4,6 +4,10 @@
 
 <<< "Starting score.ck" >>>;
 
+16 => int NUM_STEPS_PER_BAR;
+NUM_STEPS_PER_BAR * NUM_STEPS_PER_BAR => int numSteps;
+NUM_STEPS_PER_BAR => int introOutroNumSteps;
+
 BPM t; // Define t Object of Class BPM // (5) Tests your BPM object by making one
 72 => int bpm;
 t.tempo(bpm); // set tempo in BPM  // (6) Sets tempo of new BPM object
@@ -21,12 +25,12 @@ Machine.add(drumsPath) => int drumJob;
 
 // Record a short piece of music, roughly two to three minutes in length
 now => time t1; 
-for (0 => int i; i < 16; i++) {
+for (0 => int i; i < introOutroNumSteps; i++) {
     t.quarterNote => now;
 }
-for (0 => int i; i < 256; i++) {
-    i % 16 => int beat;
-    mog.playNote(gen0, beat);
+for (0 => int i; i < numSteps; i++) {
+    i % NUM_STEPS_PER_BAR => int beat;
+    mog.playNote(gen0, beat, NUM_STEPS_PER_BAR);
     
     t.eighthNote => now;
 
@@ -36,7 +40,7 @@ for (0 => int i; i < 256; i++) {
     gen1 @=> gen0;
 }
 mog.silence();
-for (0 => int i; i < 16; i++) {
+for (0 => int i; i < introOutroNumSteps; i++) {
     t.quarterNote => now;
 }
 Machine.remove(drumJob);
