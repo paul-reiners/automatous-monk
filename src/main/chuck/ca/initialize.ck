@@ -9,5 +9,8 @@ Machine.add(elementaryCAPath);
 me.dir() + "/bass.ck" => string bassPath;
 Machine.add(bassPath);  
 
-me.dir() + "/score.ck" => string scorePath;
-Machine.add(scorePath);  
+me.dir() + "/Score.ck" => string scorePath;
+Machine.add(scorePath);
+
+Score score;  
+score.playScore();
