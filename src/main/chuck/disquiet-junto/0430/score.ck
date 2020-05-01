@@ -20,8 +20,8 @@ ElementaryCA elementaryCA;
 
 CAMoog mog;
 
-me.dir() + "/DrumProbsXSporks.ck" => string drumsPath;
-Machine.add(drumsPath) => int drumJob;  
+// me.dir() + "/DrumProbsXSporks.ck" => string drumsPath;
+// Machine.add(drumsPath) => int drumJob;  
 
 // Record a short piece of music, roughly two to three minutes in length
 now => time t1; 
@@ -43,7 +43,7 @@ mog.silence();
 for (0 => int i; i < introOutroNumSteps; i++) {
     t.quarterNote => now;
 }
-Machine.remove(drumJob);
+// Machine.remove(drumJob);
 now => time t2;
 t2 - t1 => dur span;
 <<<"total">>>;
