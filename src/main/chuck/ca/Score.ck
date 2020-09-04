@@ -2,11 +2,14 @@
 // First define some global durations
 // BPM = 156
 
+me.dir() + "/BPM.ck" => string bpmPath;
+Machine.add(bpmPath);
+
 public class Score {
     fun void playScore() {
         <<< "Starting score.ck" >>>;
         
-        BPM t; // Define t Object of Class BPM // (5) Tests your BPM object by making one
+        BPM t;
 
         16 => int NUM_STEPS_PER_BAR;
         NUM_STEPS_PER_BAR * NUM_STEPS_PER_BAR => int numSteps;
@@ -22,9 +25,6 @@ public class Score {
         <<< gen0[0], gen0[1], gen0[2], gen0[3], gen0[4], gen0[5], gen0[6], gen0[7], gen0[8], gen0[9], gen0[10], gen0[11] >>>;
         
         CAMoog mog;
-        
-        // me.dir() + "/DrumProbsXSporks.ck" => string drumsPath;
-        // Machine.add(drumsPath) => int drumJob;  
         
         // Record a short piece of music, roughly two to three minutes in length
         now => time t1; 
