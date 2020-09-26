@@ -49,11 +49,11 @@ void draw() {
   loadPixels();
   image(img, 0, 0);
   //Map blue hue from 0 to 1
-  float yoffset = blue(pixels[mouseX + mouseY * width]) / 255.0;
-  //Map mouseY logarithmically to 150 - 1150 to create a base frequency range
-  float frequency = pow(1000, yoffset) + 150;
-  //Use mouseX mapped from -0.5 to 0.5 as a detune argument
-    int matrixsize = 3;
+  float blueAtPixel = blue(pixels[mouseX + mouseY * width]) / 255.0;
+  //Map blue at the mouseY coordinate logarithmically to 150 - 1150 to create a base frequency range
+  float frequency = pow(1000, blueAtPixel) + 150;
+  //Use blue in convolution of neighborhood of mouse mapped from -0.5 to 0.5 as a detune argument
+  int matrixsize = 3;
   float blue = convolution(mouseX, mouseY, matrix, matrixsize, img);
   float detune = map(blue, 0, 255, -0.5, 0.5);
 
