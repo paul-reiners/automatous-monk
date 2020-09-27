@@ -57,9 +57,9 @@ void setup() {
 void draw() {
   float blueAtPixel = blue(pixels[mouseX + mouseY * width]);
   float blueInRegion = blueConvolutiion(mouseX, mouseY, blueMatrix, blueMatrixSize, img);
-  //Map blue in the pixel region logarithmically to 150 - 1150 to create a base frequency range
+  // Map blue in the pixel region of the mouse logarithmically to 150 - 1150 to create a base frequency range
   float frequency = pow(1000, blueAtPixel / 255.0) + 150;
-  //Use blue at the pixel of the mouse mapped from -0.5 to 0.5 as a detune argument
+  // Use blue at the pixel of the mouse mapped from -0.5 to 0.5 as a detune argument
   float detune = map(blueInRegion, 0, 255, -0.5, 0.5);
 
   for (int i = 0; i < numSines; i++) { 
