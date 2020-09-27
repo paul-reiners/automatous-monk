@@ -1,6 +1,6 @@
 /**
  * Disquiet Junto 456 - Line Up
- * Painting by Agnes Martin
+ * Painting by Agnes Martin - Summer, 1964
  * 
  * More on this 456th weekly Disquiet Junto project, Line Up (The Assignment: Interpret a painting by Agnes Martin as if it were a graphic score), at:
  *   https://disquiet.com/0456/
